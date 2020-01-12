@@ -1,0 +1,116 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
+  <mat-step [stepControl]="animalFormGroup" required>
+    <form [formGroup]="animalFormGroup" class="animal-form">
+      <ng-template matStepLabel>Choose animal species and name</ng-template>
+
+      <mat-form-field>
+        <mat-select placeholder="Family" formControlName="family" required>
+          <mat-option [value]="null">Unknown</mat-option>
+          <mat-option [value]="family.key"
+                      *ngFor="let family of familyService.familyNames | keyvalue">{{family.value}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The family of the animal</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Category" formControlName="category" required>
+          <mat-option [value]="null">Unknown</mat-option>
+          <mat-option [value]="category.key"
+                      *ngFor="let category of categoryService.categoryNames | keyvalue">{{category.value}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The category of the animal</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Name" formControlName="name" required>
+        <mat-hint align="end">The name of the animal</mat-hint>
+        <mat-error *ngIf="animalFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="animalFormGroup.controls.name.hasError('nameAlreadyExists')">Name already exists</mat-error>
+      </mat-form-field>
+      <br>
+      <div class="button-start">
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="animalFormGroup" required>
+    <form [formGroup]="animalFormGroup" class="animal-form">
+      <ng-template matStepLabel>Fill in the birthdate and the health status</ng-template>
+      <app-date placeholder="Date of Birth" formControlName="date_of_birth" hint="The birthday of the animal"
+                [required]="true"></app-date>
+      <br>
+      <div *ngIf="age !== undefined">
+        Age: {{age + ' Year(s)'}}
+      </div>
+      <br>
+      <mat-checkbox formControlName="healthy">Healthy?</mat-checkbox>
+      <div class="button-center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="animalFormGroup" required>
+    <form [formGroup]="animalFormGroup" class="animal-form">
+      <ng-template matStepLabel>Fill in the originland and the food</ng-template>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Origin Land" formControlName="origin_land">
+        <mat-hint align="end">The origin land of the animal</mat-hint>
+        <mat-error *ngIf="animalFormGroup.controls.origin_land.hasError('originlandAlreadyExists')">Origin Land already
+          exists
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Food" formControlName="food" required>
+        <mat-hint align="end">The food of the animal</mat-hint>
+        <mat-error *ngIf="animalFormGroup.controls.food.hasError('max', 'badWord')">Food is too long or contains "bad
+          food"
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <div class="button-center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="animalFormGroup" required>
+    <form [formGroup]="animalFormGroup" class="animal-form">
+      <ng-template matStepLabel>Choose the zoo and the zookeeper</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Zoo" formControlName="zoo">
+          <mat-option [value]="null">Unknown</mat-option>
+          <mat-option [value]="zooOption.id" *ngFor="let zooOption of zooOptions">{{zooOption.name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The Zoo of the animal</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Zookeeper" formControlName="zookeepers" multiple>
+          <mat-option [value]="zookeeperOption.id"
+                      *ngFor="let zookeeperOption of zookeeperOptions">{{zookeeperOption.first_name + " " + zookeeperOption.last_name}}</mat-option>
+        </mat-select>
+        <mat-hint align="end">The Zookeeper/s of the animal</mat-hint>
+      </mat-form-field>
+      <br>
+      <div class="button-done">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+      <div>
+        <button mat-raised-button color="primary"
+                [disabled]="!animalFormGroup.valid"
+                (click)="createAnimal()">
+          <span *ngIf="!animalFormGroup.controls.id.value">Create</span>
+          <span *ngIf="animalFormGroup.controls.id.value">Update</span>
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+

@@ -1,0 +1,50 @@
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="zoos">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>Address</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.address}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="town">
+    <th mat-header-cell *matHeaderCellDef>Town</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.town}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="postal_code">
+    <th mat-header-cell *matHeaderCellDef>Postal Code</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.postal_code}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="land">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.land}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="telephone_number">
+    <th mat-header-cell *matHeaderCellDef>Telephone Number</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.telephone_number}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="mail">
+    <th mat-header-cell *matHeaderCellDef>Mail</th>
+    <td mat-cell *matCellDef="let zoo">{{zoo.mail}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let zoo">
+      <button class="button-edit" mat-button [routerLink]="'/zoo-form/' + zoo.id">Edit</button>
+      <button class="button-delete" mat-button (click)="deleteZoo(zoo)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar *ngIf="isLoggedIn">
+  <button mat-button [matMenuTriggerFor]="animalMenu">Animal</button>
+  <mat-menu #animalMenu="matMenu">
+    <button mat-menu-item routerLink="animal-list">List animals</button>
+    <button mat-menu-item routerLink="animal-form">Create animal</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="zooMenu">Zoo</button>
+  <mat-menu #zooMenu="matMenu">
+    <button mat-menu-item routerLink="zoo-list">List zoos</button>
+    <button mat-menu-item routerLink="zoo-form">Create zoo</button>
+  </mat-menu>
+  <button mat-button id="logout-button" (click)="openLogoutDialog()">Logout</button>
+</mat-toolbar>
+<router-outlet></router-outlet>
+
+
+
+
+

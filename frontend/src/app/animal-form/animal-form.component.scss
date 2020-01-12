@@ -1,0 +1,38 @@
+.animal-form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  margin: 3rem auto;
+}
+
+.button-center {
+  display: inline-block;
+  flex-direction: column;
+  width: 8rem;
+  margin: 3rem auto;
+  background-color: cornflowerblue;
+  color: azure;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.button-done {
+  display: inline-block;
+  flex-direction: column;
+  width: 8.5rem;
+  margin: 3rem auto;
+  background-color: cornflowerblue;
+  color: azure;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.button-start {
+  display: inline-block;
+  flex-direction: column;
+  margin: 3rem auto;
+  background-color: cornflowerblue;
+  color: azure;
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+

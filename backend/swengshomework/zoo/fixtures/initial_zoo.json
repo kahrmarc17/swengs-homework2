@@ -1,0 +1,29 @@
+[
+  {
+
+    "model": "zoo.zoo",
+    "pk": 1,
+    "fields": {
+      "name": "Schönbrunn",
+      "address": "Schönbrunnstraße 1",
+      "postal_code": "1020",
+      "town": "Wien",
+      "land": "Österreich",
+      "telephone_number": "+43664 5674324",
+      "mail": "office@schoenbrunn.at"
+    }
+  },
+  {
+    "model": "zoo.zoo",
+    "pk": 2,
+    "fields": {
+      "name": "Tierpark Herberstein",
+      "address": "Herbersteinstraße 1",
+      "postal_code": "8056",
+      "town": "St.Johann an der Haide",
+      "land": "Österreich",
+      "telephone_number": "+43664 4567535",
+      "mail": "office@herberstein.at"
+    }
+  }
+]

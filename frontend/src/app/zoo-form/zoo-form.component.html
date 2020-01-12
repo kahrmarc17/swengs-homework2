@@ -1,0 +1,62 @@
+<form [formGroup]="zooFormGroup" class="zoo-form">
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name" required>
+    <mat-hint align="end">The name of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Address" formControlName="address" required>
+    <mat-hint align="end">The address of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.address.hasError('required')">Address is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Postal Code z.B. 8000 or 80000" formControlName="postal_code" required>
+    <mat-hint align="end">The postal code of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.postal_code.hasError('required')">Postal Code is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Town" formControlName="town">
+    <mat-hint align="end">The town of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.town.hasError('required')">Town is required</mat-error>
+  </mat-form-field>
+
+  <!--<mat-form-field>
+    <input matInput type="text" placeholder="Land" formControlName="land" required>
+    <mat-hint align="end">The land of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.land.hasError('required')">Land is required</mat-error>
+  </mat-form-field> -->
+  <br>
+  <app-country-picker placeholder="Country" id="end" formControlName="land" hint="The country of the zoo"
+            [required]="true"></app-country-picker>
+  <br>
+
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Telephonenumber z.B. +436644567235, 06644567235, +43(0)6604536478" formControlName="telephone_number" required>
+    <mat-hint align="end">The telephonenumber of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.telephone_number.hasError('required')">Number is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Mail z.B. schoenbrunn.zoo@office.com" formControlName="mail" required>
+    <mat-hint align="end">The mail of the zoo</mat-hint>
+    <mat-error *ngIf="zooFormGroup.controls.mail.hasError('required')">Mail is required</mat-error>
+  </mat-form-field>
+
+
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!zooFormGroup.valid" (click)="createZoo()">
+      <span *ngIf="!zooFormGroup.controls.id.value">Create</span>
+      <span *ngIf="zooFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+
+</form>
+
+<script src="... /angular-countries/dist/js/ngCountries.js"></script>
+
+

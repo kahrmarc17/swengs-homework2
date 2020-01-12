@@ -1,0 +1,14 @@
+[
+  {
+    "model": "zoo.zookeeper",
+    "pk": 1,
+    "fields": {
+      "first_name": "Susi",
+      "last_name": "Kanns",
+      "date_of_birth": "1989-04-26",
+      "adjusted_since": "2010-01-13",
+      "salary": 1400,
+      "telephone_number": "+43664 4567853"
+    }
+  }
+]
