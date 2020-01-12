@@ -23,8 +23,6 @@
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
     "@auth0/angular-jwt": "^3.0.1",
-    "@mobiscroll/angular": "latest",
-    "@mobiscroll/angular-lite": "^4.9.0",
     "angular-countries": "^1.1.5",
     "angular-country-picker": "^2.2.0",
     "country-picker": "0.0.10",

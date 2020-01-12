@@ -55,13 +55,10 @@
   <mat-step [stepControl]="animalFormGroup" required>
     <form [formGroup]="animalFormGroup" class="animal-form">
       <ng-template matStepLabel>Fill in the originland and the food</ng-template>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Origin Land" formControlName="origin_land">
-        <mat-hint align="end">The origin land of the animal</mat-hint>
-        <mat-error *ngIf="animalFormGroup.controls.origin_land.hasError('originlandAlreadyExists')">Origin Land already
-          exists
-        </mat-error>
-      </mat-form-field>
+      <br>
+      <app-country-picker placeholder="Origin Land" id="end" formControlName="origin_land" hint="The country of the animal"
+                          [required]="true"></app-country-picker>
+      <br>
 
       <mat-form-field>
         <input matInput type="text" placeholder="Food" formControlName="food" required>

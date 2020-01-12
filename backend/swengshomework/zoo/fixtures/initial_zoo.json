@@ -1,29 +1,42 @@
+
 [
   {
-
     "model": "zoo.zoo",
     "pk": 1,
     "fields": {
-      "name": "Schönbrunn",
-      "address": "Schönbrunnstraße 1",
-      "postal_code": "1020",
+      "name": "Schönbrunner Tiergarten-Gesellschaft m.b.H",
+      "address": "Maxingstraße 13 b",
       "town": "Wien",
-      "land": "Österreich",
-      "telephone_number": "+43664 5674324",
-      "mail": "office@schoenbrunn.at"
+      "postal_code": "1130",
+      "land": "Austria",
+      "telephone_number": "+431877929400",
+      "mail": "office@zoovienna.at"
     }
   },
   {
     "model": "zoo.zoo",
     "pk": 2,
     "fields": {
-      "name": "Tierpark Herberstein",
-      "address": "Herbersteinstraße 1",
-      "postal_code": "8056",
-      "town": "St.Johann an der Haide",
-      "land": "Österreich",
-      "telephone_number": "+43664 4567535",
-      "mail": "office@herberstein.at"
+      "name": "Tierwelt Herberstein",
+      "address": "Buchberg 50",
+      "town": "Stubenberg am See",
+      "postal_code": "8223",
+      "land": "Austria",
+      "telephone_number": "+433176807776",
+      "mail": "info@tierwelt-herberstein.at"
+    }
+  },
+  {
+    "model": "zoo.zoo",
+    "pk": 3,
+    "fields": {
+      "name": "Zoologischer Garten Berlin AG",
+      "address": "Hardenbergplatz 8",
+      "town": "Berlin",
+      "postal_code": "10787",
+      "land": "Germany",
+      "telephone_number": "+493025401057",
+      "mail": "info@zoo-berlin.de"
     }
   }
 ]

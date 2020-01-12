@@ -1,68 +1,112 @@
-import {Component, forwardRef, OnInit, Input, EventEmitter, Output} from '@angular/core';
-/*import {Country} from '@angular-material-extensions/select-country';*/
-import {FormControl} from '@angular/forms';
+import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {COUNTRIES_DB} from '@angular-material-extensions/select-country/lib/db';
-import {MatAutocompleteSelectedEvent, MatFormFieldAppearance} from '@angular/material';
 import {map, startWith} from 'rxjs/operators';
-
 
 export interface Country {
   name: string;
-  alpha2Code: string;
-  alpha3Code: string;
-  numericCode: string;
-  }
-
+}
 
 
 @Component({
   selector: 'app-country-picker',
   templateUrl: './country-picker.component.html',
   styleUrls: ['./country-picker.component.scss'],
-
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CountryPickerComponent),
+      multi: true
+    }
+  ]
 })
-export class CountryPickerComponent implements OnInit {
+export class CountryPickerComponent implements ControlValueAccessor, OnInit {
 
+  @Input()
+  placeholder: string;
+  @Input()
+  required = false;
 
-  @Input() placeHolder = 'Select country';
-  @Input() label: string;
-  @Input() appearance: MatFormFieldAppearance;
-  @Input() disabled: boolean;
-  @Input() readonly: boolean;
-  @Input() hint: any;
-  @Input() required = true;
+  country = new FormControl();
+  private propagateChange: any;
+  filteredCountries: Observable<Country[]>;
 
+  countries: Country[] = [
+    {
+      name: 'Austria',
+    },
+    {
+      name: 'Germany'
+    },
+    {
+      name: 'France'
+    },
+    {
+      name: 'Canada'
+    },
+    {
+      name: 'USA'
+    },
+    {
+      name: 'Russia'
+    },
+    {
+      name: 'Italy'
+    },
+    {
+      name: 'Brazil'
+    },
+    {
+      name: 'China'
+    },
+    {
+      name: 'Australia'
+    },
+    {
+      name: 'Egypt'
+    },
+    {
+      name: 'Romania'
+    },
+    {
+      name: 'England'
+    }
+  ];
 
-  @Output() onCountrySelected: EventEmitter<Country> = new EventEmitter<Country>();
+  constructor(private fb: FormBuilder) {
 
-
-  countryFormControl = new FormControl();
-  selectedCountry: Country;
-  countries: Country[] = COUNTRIES_DB;
-  filteredOptions: Observable<Country[]>;
+  }
 
   ngOnInit() {
-    this.filteredOptions = this.countryFormControl.valueChanges
+    this.country = this.fb.control(null);
+    this.country.valueChanges.subscribe((newValue) => {
+      this.propagateChange(newValue);
+    });
+
+    this.filteredCountries = this.country.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filter(value))
+        map(country => country ? this._filterCountries(country) : this.countries.slice())
       );
   }
 
-  private _filter(value: string): Country[] {
+  private _filterCountries(value: string): Country[] {
     const filterValue = value.toLowerCase();
 
-    return this.countries.filter((option: Country) =>
-      option.name.toLowerCase().includes(filterValue)
-      || option.alpha2Code.toLowerCase().includes(filterValue)
-      || option.alpha3Code.toLowerCase().includes(filterValue)
-    );
+    return this.countries.filter(option => option.name.toLowerCase().indexOf(filterValue));
   }
 
-  onOptionsSelected($event: MatAutocompleteSelectedEvent) {
-    this.selectedCountry = this.countries.find(country => country.name === $event.option.value);
-    this.onCountrySelected.emit(this.selectedCountry);
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
   }
 
+  registerOnTouched(fn: any): void {
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+  }
+
+  writeValue(obj: any): void {
+    this.country.patchValue(obj, {emitEvent: false});
+  }
 }

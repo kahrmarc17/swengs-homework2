@@ -5,9 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FamilyService} from '../service/family.service';
 import {AnimalService} from '../service/animal.service';
 import {CategoryService} from '../service/category.service';
-import {ZooService} from '../service/zoo.service';
-import {ZookeeperService} from '../service/zookeeper.service';
-import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-animal-form',

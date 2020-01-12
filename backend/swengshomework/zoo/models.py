@@ -57,7 +57,7 @@ class Animal(models.Model):
     family = models.CharField(max_length=2, choices=CHOICES1, null=True)
     category = models.CharField(max_length=2, choices=CHOICES2, null=True)
     name = models.TextField()
-    origin_land = models.TextField(blank=True)
+    origin_land = models.TextField()
     date_of_birth = models.DateField()
     food = models.TextField()
     healthy = models.BooleanField()

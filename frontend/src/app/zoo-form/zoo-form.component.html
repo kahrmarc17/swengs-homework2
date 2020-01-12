@@ -24,11 +24,7 @@
     <mat-error *ngIf="zooFormGroup.controls.town.hasError('required')">Town is required</mat-error>
   </mat-form-field>
 
-  <!--<mat-form-field>
-    <input matInput type="text" placeholder="Land" formControlName="land" required>
-    <mat-hint align="end">The land of the zoo</mat-hint>
-    <mat-error *ngIf="zooFormGroup.controls.land.hasError('required')">Land is required</mat-error>
-  </mat-form-field> -->
+
   <br>
   <app-country-picker placeholder="Country" id="end" formControlName="land" hint="The country of the zoo"
             [required]="true"></app-country-picker>
@@ -57,6 +53,5 @@
 
 </form>
 
-<script src="... /angular-countries/dist/js/ngCountries.js"></script>
 
 

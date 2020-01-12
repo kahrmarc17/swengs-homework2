@@ -80,8 +80,6 @@ def animal_delete(request, pk):
     return Response(status=204)
 
 
-
-
 @swagger_auto_schema(method='GET', responses={200: ZooListSerializer(many=True)})
 @api_view(['GET'])
 def zoo_list(request):

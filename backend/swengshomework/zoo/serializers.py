@@ -34,14 +34,11 @@ class ZooListSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'address', 'town', 'postal_code', 'land', 'telephone_number', 'mail']
 
 
-
 class ZooFormSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Zoo
         fields = '__all__'
-
-
 
 
 class ZookeeperOptionSerializer(serializers.ModelSerializer):

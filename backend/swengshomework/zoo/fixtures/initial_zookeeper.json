@@ -8,7 +8,43 @@
       "date_of_birth": "1989-04-26",
       "adjusted_since": "2010-01-13",
       "salary": 1400,
-      "telephone_number": "+43664 4567853"
+      "telephone_number": "+436648230987"
+    }
+  },
+  {
+    "model": "zoo.zookeeper",
+    "pk": 2,
+    "fields": {
+      "first_name": "Max",
+      "last_name": "Mustermann",
+      "date_of_birth": "1991-06-03",
+      "adjusted_since": "2004-12-01",
+      "salary": 1400,
+      "telephone_number": "+436644567853"
+    }
+  },
+  {
+    "model": "zoo.zookeeper",
+    "pk": 3,
+    "fields": {
+      "first_name": "Jon",
+      "last_name": "Doe",
+      "date_of_birth": "1965-03-13",
+      "adjusted_since": "2012-09-03",
+      "salary": 1600,
+      "telephone_number": "+496644092876"
+    }
+  },
+  {
+    "model": "zoo.zookeeper",
+    "pk": 4,
+    "fields": {
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "date_of_birth": "1972-08-22",
+      "adjusted_since": "2018-10-02",
+      "salary": 1200,
+      "telephone_number": "+436647678789"
     }
   }
 ]
