@@ -62,7 +62,7 @@ class Animal(models.Model):
     food = models.TextField()
     healthy = models.BooleanField()
     zoo = models.ForeignKey(Zoo, on_delete=models.CASCADE, blank=True)
-    zookeeper = models.ManyToManyField('Zookeeper', blank=True)
+    zookeeper = models.ManyToManyField(Zookeeper, blank=True)
 
 
     def __str__(self):
